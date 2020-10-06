@@ -1,0 +1,53 @@
+﻿@page "/"
+
+@using static TodoBlazor.Shared.MainLayout
+
+<div>
+    <table class="table table-hover">
+        <tr>
+            <th>待辦事項</th>
+            <th>刪除</th>
+        </tr>
+        @for (int i = 0; i < TodoList.Count; i++)
+        {
+            var index = i;
+
+            <Todo Item="@TodoList[index]" Id="@index" DeleteItem="@DeleteCallback" />
+        }
+    </table>
+</div>
+
+<div>
+    <label>New Todo:</label> <input type="text" @bind="newTodoItem" /> <button class="btn btn-primary" @onclick="Add">Add</button>
+</div>
+<br />
+
+@code{
+
+    private string newTodoItem;
+    private List<string> TodoList;
+
+    protected override void OnInitialized()
+    {
+        TodoList = new List<string>()
+{
+            "Buy Milk",
+            "Buy Apple"
+        };
+    }
+
+    void Add()
+    {
+        if (!string.IsNullOrEmpty(newTodoItem))
+        {
+            TodoList.Add(newTodoItem);
+            newTodoItem = "";
+        }
+    }
+
+    void DeleteCallback(int index)
+    {
+        TodoList.RemoveAt(index);
+    }
+
+}

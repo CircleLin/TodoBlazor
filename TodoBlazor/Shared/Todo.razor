@@ -1,0 +1,27 @@
+﻿@inject IJSRuntime js
+
+<tr>
+    <td>@Item</td>
+    <td><button class="btn btn-danger btn-sm" @onclick="DeleteAsync">delete</button></td>
+</tr>
+
+@code {
+    [Parameter]
+    public string Item { get; set; }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public EventCallback<int> DeleteItem { get; set; }
+
+    private async Task DeleteAsync()
+    {
+        //bool confirmed = await js.InvokeAsync<bool>("confirm", "要刪除?");
+        bool confirmed = await js.InvokeAsync<bool>("SweetConfirm", "Delete", $"確定要刪除{Item}?");
+        if (confirmed)
+        {
+            await DeleteItem.InvokeAsync(Id);
+        }
+    }
+}
