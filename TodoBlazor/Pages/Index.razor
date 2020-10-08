@@ -38,7 +38,7 @@
 
     void Add()
     {
-        if (!string.IsNullOrEmpty(newTodoItem))
+        if (!string.IsNullOrWhiteSpace(newTodoItem))
         {
             TodoList.Add(newTodoItem);
             newTodoItem = "";
