@@ -18,7 +18,11 @@ jobs:
       uses: actions/setup-dotnet@v1.6.0
       with:
         dotnet-version: 3.1
-
+    
+    # 執行單元測試專案
+    - name: Run Unit Test 
+      run: dotnet test
+      
     # 發佈程式到Release資料夾
     - name: Publish .NET Core Project
       run: dotnet publish TodoBlazor/TodoBlazor.csproj -c Release -o release --nologo
