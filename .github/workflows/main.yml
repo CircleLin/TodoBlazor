@@ -21,7 +21,7 @@ jobs:
 
     # 發佈程式到Release資料夾
     - name: Publish .NET Core Project
-      run: dotnet publish BlazorDeploy/BlazorDeploy.csproj -c Release -o release --nologo
+      run: dotnet publish TodoBlazor/TodoBlazor.csproj -c Release -o release --nologo
     
     # 修改index.html的base href -- 從"/"改為"/TodoBlazor/"
     - name: Change base-tag in index.html from / to TodoBlazor
