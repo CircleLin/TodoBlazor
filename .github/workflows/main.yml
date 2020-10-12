@@ -20,7 +20,7 @@ jobs:
         dotnet-version: 3.1
     
     - name: Add bunit
-      run: dotnet add package bunit --version 1.0.0-beta-10
+      run: dotnet add TodoBlazorTests  package bunit --version 1.0.0-beta-10
     
     - name: Build
       run: dotnet build --configuration Release
